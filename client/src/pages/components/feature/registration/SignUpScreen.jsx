@@ -8,15 +8,15 @@ import {
   Avatar,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import AuthenticationLayout from "../components/Layouts/AuthenticationLayout";
+import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { SignUpValidations } from "../validations/Registration";
+import  {SignUpValidations} from '../../../../utils/validations/Registration'
 
-export default function App() {
+export default function SignUpScreen() {
   const {
     control,
     handleSubmit,
@@ -119,31 +119,6 @@ export default function App() {
                   label="Password"
                   helperText={
                     errors.password && <p>{errors.password.message}</p>
-                  }
-                  error={invalid}
-                />
-              )}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Controller
-              name="confirmPassword"
-              control={control}
-              defaultValue=""
-              render={({
-                field: { onChange, value },
-                fieldState: { invalid },
-              }) => (
-                <TextField
-                  fullWidth
-                  type="password"
-                  value={value}
-                  onChange={(value) => onChange(value)}
-                  label="confirm Password"
-                  helperText={
-                    errors.confirmPassword && (
-                      <p>{errors.confirmPassword.message}</p>
-                    )
                   }
                   error={invalid}
                 />
