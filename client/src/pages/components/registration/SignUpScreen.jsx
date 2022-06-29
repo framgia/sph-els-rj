@@ -8,17 +8,17 @@ import {
   Avatar,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import AuthenticationLayout from "../components/Layouts/AuthenticationLayout";
+import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
 // import axios from "axios";
-import apiClient from "../lib/axios";
+import apiClient from '../../../utils/axios'
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { SignUpValidations } from "../validations/Registration";
+import { SignUpValidations } from "../../../utils/validations/Registration";
 
-export default function App() {
+export default function SignUpScreen() {
   const {
     control,
     reset,
