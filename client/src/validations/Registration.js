@@ -7,11 +7,11 @@ const requiredMsg = "This field is required";
 
 
 export const SignUpValidations = object({
-    firstName: string()
+    first_name: string()
     .max(20, 'First name must not exceed 20 characters')
     .required(requiredMsg),
 
-    lastName: string()
+    last_name: string()
     .max(20, 'Last name must not exceed 20 characters')
     .required(requiredMsg),
 
@@ -30,7 +30,7 @@ export const SignUpValidations = object({
     .matches(/\d+/, "Password must contain at least one number")
     .required(requiredMsg),
 
-  confirmPassword: string()
-    .required(requiredMsg)
-    .oneOf([ref("password"), null], "Confirm Password does not match"),
+  // confirmPassword: string()
+  //   .required(requiredMsg)
+  //   .oneOf([ref("password"), null], "Confirm Password does not match"),
 })
