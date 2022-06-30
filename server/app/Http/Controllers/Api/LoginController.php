@@ -34,6 +34,7 @@ class LoginController extends Controller
         //Return access token if the checking is successful
 
         return response()->json([
+            'data' => [ 'first_name' => $user->first_name, 'last_name' => $user->last_name, 'email' => $user->email, 'is_admin' => $user->is_admin, 'avatar' => $user->avatar],
             'access_token' => $user->createToken('api-token')->plainTextToken,  
             'type' => 'bearer',
         ], 200);
