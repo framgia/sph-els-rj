@@ -1,6 +1,6 @@
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 
-import SignUpScreen from "./components/feature/registration/SignUpScreen";
+import SignUpScreen from "./components/registration/SignUpScreen";
 
 function App() {
   return (
