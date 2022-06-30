@@ -8,15 +8,16 @@ import {
   Avatar,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
-// import axios from "axios";
-import apiClient from '../../../utils/axios'
+
+import AuthenticationLayout from "../../../../Layouts/AuthenticationLayout";
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { SignUpValidations } from "../../../utils/validations/Registration";
+import { SignUpValidations } from "../../../../utils/validations/Registration";
+import apiClient from "../../../../utils/axios";
+import axios from "axios";
 
 export default function SignUpScreen() {
   const {
@@ -31,14 +32,24 @@ export default function SignUpScreen() {
   const registerUser = async (data) => {
     // alert(JSON.stringify(data));
 
-    await apiClient.post("/users", data).then((res) => {
-      if (res.status === 200) {
-        enqueueSnackbar(`${res.data.message}`);
-        reset();
-      } else {
-        enqueueSnackbar(JSON.stringify(res.data.message.email), { variant: 'error' });
-      }
-    });
+    // axios
+    //   .get("/sanctum/csrf-cookie", {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then(() => {
+        apiClient.post("/register", data).then((res) => {
+          if (res.status === 200) {
+            enqueueSnackbar(`${res.data.message}`);
+            reset();
+          } else {
+            enqueueSnackbar(JSON.stringify(res.data.message.email), {
+              variant: "error",
+            });
+          }
+        });
+      // });
   };
 
   return (
