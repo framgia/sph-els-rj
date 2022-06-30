@@ -1,7 +1,7 @@
 import { Routes, BrowserRouter, Route, useNavigate } from 'react-router-dom'
-import SignUpScreen from './components/feature/registration/SignUpScreen';
-import DashboardScreen from './components/feature/dashboard/DashboardScreen';
-import LoginScreen from './components/feature/auth/LoginScreen';
+import SignUpScreen from './components/registration/SignUpScreen';
+import DashboardScreen from './components/dashboard/DashboardScreen';
+import LoginScreen from './components/auth/LoginScreen';
 import {useSelector} from 'react-redux'
 import { useEffect } from 'react';
 

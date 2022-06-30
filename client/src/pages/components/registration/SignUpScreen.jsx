@@ -9,14 +9,14 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import AuthenticationLayout from "../../../../Layouts/AuthenticationLayout";
+import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { SignUpValidations } from "../../../../utils/validations/Registration";
-import apiClient from "../../../../utils/axios";
+import {SignUpValidations} from '../../../utils/validations/Registration'
+import apiClient from "../../../utils/axios";
 import axios from "axios";
 
 export default function SignUpScreen() {
@@ -32,14 +32,14 @@ export default function SignUpScreen() {
   const registerUser = async (data) => {
     // alert(JSON.stringify(data));
 
-    // axios
-    //   .get("/sanctum/csrf-cookie", {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then(() => {
-        apiClient.post("/register", data).then((res) => {
+    await axios
+      .get("http://localhost:8000/sanctum/csrf-cookie", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(async () => {
+        await apiClient.post("/register", data).then((res) => {
           if (res.status === 200) {
             enqueueSnackbar(`${res.data.message}`);
             reset();
@@ -49,7 +49,7 @@ export default function SignUpScreen() {
             });
           }
         });
-      // });
+       });
   };
 
   return (
