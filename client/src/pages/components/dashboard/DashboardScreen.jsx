@@ -1,28 +1,22 @@
-import React, { useEffect } from 'react'
-import { logout } from '../../../redux/features/user/userSlice'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { logout } from "../../../redux/features/user/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import AppLayout from "../../../Layouts/AppLayout";
 const DashboardScreen = () => {
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
-
-    dispatch(logout())
-    navigate('/login')
-  }
-
-
-
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
-    <div>
-
+    <AppLayout>
       <button onClick={() => logoutHandler()}>LOGOUT</button>
-    </div>
-  )
-}
+    </AppLayout>
+  );
+};
 
-export default DashboardScreen
+export default DashboardScreen;
