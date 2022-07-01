@@ -39,7 +39,7 @@ Route::get('v1/category/{id}', [CategoryController::class, 'show']);
 Route::put('v1/category/{id}', [CategoryController::class, 'update']);
 Route::delete('v1/category/{id}', [CategoryController::class, 'destroy']);
 
-// Route::resource('/v1/category', CategoryController::class);
+Route::get('v1/users', [UserController::class, 'index']);
 
 
 

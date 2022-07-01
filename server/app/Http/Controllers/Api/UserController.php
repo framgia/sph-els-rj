@@ -21,8 +21,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        return new UserCollection(User::all());
-
+        return User::all();
     }
 
     /**
@@ -41,7 +40,7 @@ class UserController extends Controller
         //     'email'=> 'required|email|unique:users'
         // ]);
 
-        
+
     }
 
     /**
