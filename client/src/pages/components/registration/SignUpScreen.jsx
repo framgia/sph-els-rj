@@ -18,6 +18,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import  {SignUpValidations} from '../../../utils/validations/Registration'
+import  apiClient from '../../../utils/axios'
 
 export default function SignUpScreen() {
   const {
