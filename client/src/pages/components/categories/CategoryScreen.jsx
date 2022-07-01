@@ -46,6 +46,7 @@ const CategoryScreen = ({ children }) => {
       mutate("/category");
       enqueueSnackbar(`${res.data.message}`);
       handleClose();
+
       setDesription("");
       setName("");
     });
@@ -61,7 +62,7 @@ const CategoryScreen = ({ children }) => {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h5" sx={{ p: 1 }}>
+          <Typography variant="h5" sx={{ p: 1, fontWeight: "500" }}>
             Categories
           </Typography>
           <Button

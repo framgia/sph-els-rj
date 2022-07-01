@@ -90,14 +90,14 @@ export default function DenseTable() {
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell sx={{ fontWeight: "bold", fontSize: "17px" }}>
+            <TableCell sx={{ fontWeight: "medium", fontSize: "17px" }}>
               Name
             </TableCell>
-            <TableCell sx={{ fontWeight: "bold", fontSize: "17px" }}>
+            <TableCell sx={{ fontWeight: "medium", fontSize: "17px" }}>
               Description
             </TableCell>
             <TableCell
-              sx={{ fontWeight: "bold", fontSize: "17px" }}
+              sx={{ fontWeight: "medium", fontSize: "17px" }}
               align="center"
             >
               Actions
