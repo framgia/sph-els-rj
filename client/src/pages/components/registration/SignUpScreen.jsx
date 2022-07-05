@@ -8,25 +8,37 @@ import {
   Avatar,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+
 import AuthenticationLayout from "../../Layouts/AuthenticationLayout";
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import  {SignUpValidations} from '../../../utils/validations/Registration'
+import { SignUpValidations } from "../../../utils/validations/Registration";
+import apiClient from "../../../utils/axios";
 
 export default function SignUpScreen() {
   const {
     control,
+    reset,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(SignUpValidations) });
+    formState: { errors, isDirty, isValid },
+  } = useForm({ resolver: yupResolver(SignUpValidations), mode: "onChange" });
 
   const { enqueueSnackbar } = useSnackbar();
 
-  const onSubmit = () => {
-    enqueueSnackbar("Succesfully Register");
+  const registerUser = async (data) => {
+    await apiClient.post("/users", data).then((res) => {
+      if (res.status === 200) {
+        enqueueSnackbar(`${res.data.message}`);
+        reset();
+      } else {
+        enqueueSnackbar(JSON.stringify(res.data.message.email), {
+          variant: "error",
+        });
+      }
+    });
   };
 
   return (
@@ -35,11 +47,15 @@ export default function SignUpScreen() {
       <Typography component="h1" variant="h5">
         Sign up
       </Typography>
-      <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
+      <Box
+        component="form"
+        onSubmit={handleSubmit(registerUser)}
+        sx={{ mt: 3 }}
+      >
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <Controller
-              name="firstName"
+              name="first_name"
               control={control}
               defaultValue=""
               render={({
@@ -62,7 +78,7 @@ export default function SignUpScreen() {
 
           <Grid item xs={12} sm={6}>
             <Controller
-              name="lastName"
+              name="last_name"
               control={control}
               defaultValue=""
               render={({
@@ -131,6 +147,7 @@ export default function SignUpScreen() {
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
+          disabled={!isDirty || !isValid}
         >
           Sign Up
         </Button>
