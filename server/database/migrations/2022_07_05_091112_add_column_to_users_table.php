@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveNameColumnFromUsers extends Migration
+class AddColumnToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,10 @@ class RemoveNameColumnFromUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('avatar')->nullable();
+            $table->boolean('is_admin')->default(false);
             $table->dropColumn('name');
         });
     }
@@ -28,7 +32,7 @@ class RemoveNameColumnFromUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('name')->after('first_name');
+
         });
     }
 }
