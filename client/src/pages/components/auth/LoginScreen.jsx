@@ -5,10 +5,10 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import AuthenticationLayout from "../../../../Layouts/AuthenticationLayout";
-import apiClient from "../../../../utils/axios";
+import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
+import apiClient from "../../../utils/axios";
 import { useDispatch } from "react-redux";
-import { login } from "../../../../redux/features/user/userSlice";
+import { login } from "../../../redux/features/user/userSlice";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -33,7 +33,7 @@ const LoginScreen = () => {
     e.preventDefault();
 
 
-    apiClient.get('/sanctum/csrf-cookie').then(() => {
+    await axios.get('http://localhost:8000/sanctum/csrf-cookie').then(async () => {
       // Login...
       apiClient
       .post("/login", {
@@ -41,7 +41,7 @@ const LoginScreen = () => {
         password,
       })
       .then((res) => {
-        console.log(res);
+   
         if (res.status === 200) {
           dispatch(
             login({
@@ -55,7 +55,7 @@ const LoginScreen = () => {
           localStorage.setItem("logged_in", true);
 
           navigate(redirect);
-        } else {
+        } else if(res.status === 422) {
           enqueueSnackbar("asdasd");
         }
       });
