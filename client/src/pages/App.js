@@ -5,9 +5,10 @@ import SignUpScreen from "./components/registration/SignUpScreen";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/register" element={<SignUpScreen />} />
-      </Routes>
+    <Routes>
+      <Route path='/register' element={ <SignUpScreen />}/>
+      {/* <Route path='/login' element={ <LoginScreen />}/> */}
+    </Routes>
     </BrowserRouter>
   );
 }
