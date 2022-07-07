@@ -14,6 +14,11 @@ class WordController extends Controller
 
         return Word::all();
     }
+
+    public function show($id)
+    {
+        return Word::find($id);
+    }
     public function store(Request $request)
     {
         //
@@ -25,5 +30,21 @@ class WordController extends Controller
         $data = Word::create($request->all());
 
         return response()->json(['data' => $data, 'message' => 'Word Created Successfully']);
+    }
+    public function update(Request $request, $id)
+    {
+        $word = Word::find($id);
+
+        $word->word = $request->word;
+
+
+        $word->save();
+
+        return response()->json(['message' => 'Word Updated']);
+    }
+    public function destroy($id)
+    {
+
+        return Word::destroy($id);
     }
 }

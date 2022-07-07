@@ -25,7 +25,11 @@ import LoginScreen from "./components/auth/LoginScreen";
 import UserScreeen from "./components/user/UserScreen";
 import WordCreation from "./components/words/WordCreation";
 import CategoryScreen from "./components/categories/CategoryScreen";
+<<<<<<< HEAD
 >>>>>>> 7295a2a (feature/create-category-markup)
+=======
+import ChoiceCreation from "./components/words/ChoiceCreation";
+>>>>>>> 1cf1908 (feature/word-crud)
 
 function App() {
   return (
@@ -56,6 +60,10 @@ function App() {
         <Route path="/lessons" element={<CategoryScreen />} />
         <Route path="/users" element={<UserScreeen />} />
         <Route path="/category/:category_id/word" element={<WordCreation />} />
+        <Route
+          path="/category/:category_id/word/:word_id"
+          element={<ChoiceCreation />}
+        />
       </Routes>
 >>>>>>> 7295a2a (feature/create-category-markup)
     </BrowserRouter>

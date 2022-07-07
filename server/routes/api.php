@@ -44,8 +44,10 @@ Route::get('v1/users', [UserController::class, 'index']);
 
 
 Route::post('v1/words', [WordController::class, 'store']);
-
 Route::get('v1/words', [WordController::class, 'index']);
+Route::get('v1/words/{id}', [WordController::class, 'show']);
+Route::delete('v1/words/{id}', [WordController::class, 'destroy']);
+Route::put('v1/words/{id}', [WordController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

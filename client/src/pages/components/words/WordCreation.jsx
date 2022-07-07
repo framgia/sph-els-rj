@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import AppLayout from "../../../Layouts/AppLayout";
 import ChoiceCreation from "./ChoiceCreation";
-import { Button, Paper, Box, TextField } from "@mui/material";
+import {
+  Button,
+  Paper,
+  Box,
+  TextField,
+  Typography,
+  Modal,
+} from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import apiClient from "../../../utils/axios";
 
@@ -13,9 +20,9 @@ import { mutate } from "swr";
 
 const WordCreation = () => {
   const { category_id } = useParams();
-  const { enqueueSnackbar } = useSnackbar();
 
   const [word, setWord] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleAddWordSubmit = (e) => {
     e.preventDefault();
@@ -65,9 +72,14 @@ const WordCreation = () => {
             </Box>
           </form>
         </Box>
-        <WordsTable />
+        <Box sx={{ marginTop: 4 }}>
+          <Typography variant="h5" color="primary">
+            Words List
+          </Typography>
+          <WordsTable />
+        </Box>
       </Paper>
-      <ChoiceCreation />
+      {/* <ChoiceCreation /> */}
     </AppLayout>
   );
 };
