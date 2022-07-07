@@ -12,20 +12,10 @@ import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ef4ce15 (cleanup)
-import { SignUpValidations } from "../../../utils/validations/Registration";
-import apiClient from "../../../utils/axios";
-
-=======
 import { SignUpValidations } from "../../../utils/validations/Registration";
 import apiClient from "../../../utils/axios";
 import { useSelector } from "react-redux";
->>>>>>> 876e31f (refactor login functionality)
 
 export default function SignUpScreen() {
   const navigate = useNavigate();
@@ -59,11 +49,7 @@ export default function SignUpScreen() {
           }
         });
       });
-<<<<<<< HEAD
-    }
-=======
   };
->>>>>>> ef4ce15 (cleanup)
 
   useEffect(() => {
     // const loggedIn = localStorage.getItem("logged_in");
