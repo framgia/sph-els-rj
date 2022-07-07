@@ -15,7 +15,10 @@ import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ef4ce15 (cleanup)
 import { SignUpValidations } from "../../../utils/validations/Registration";
 import apiClient from "../../../utils/axios";
 
@@ -31,11 +34,8 @@ export default function SignUpScreen() {
   const { enqueueSnackbar } = useSnackbar();
 
   const registerUser = async (data) => {
-
-    // alert(JSON.stringify(data));
-
-    await axios
-      .get("http://localhost:8000/sanctum/csrf-cookie", {
+    await apiClient
+      .get("/sanctum/csrf-cookie", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -52,7 +52,11 @@ export default function SignUpScreen() {
           }
         });
       });
+<<<<<<< HEAD
     }
+=======
+  };
+>>>>>>> ef4ce15 (cleanup)
 
   return (
     <AuthenticationLayout>
