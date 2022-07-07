@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import AuthenticationLayout from "../../../../Layouts/AuthenticationLayout";
+import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
@@ -32,8 +32,10 @@ export default function SignUpScreen() {
 
   const registerUser = async (data) => {
 
-    await apiClient
-      .get("/sanctum/csrf-cookie", {
+    // alert(JSON.stringify(data));
+
+    await axios
+      .get("http://localhost:8000/sanctum/csrf-cookie", {
         headers: {
           "Content-Type": "application/json",
         },
