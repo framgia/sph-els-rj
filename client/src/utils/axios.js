@@ -12,7 +12,7 @@ const apiClient = axios.create({
   baseURL: 'http://localhost:8000/api/v1',
 >>>>>>> f6190d0 (fix-file-structure(2nd commit))
   headers: {
-    "X-Requested-With": "XMLHttpRequest",
+    "Content-Type": 'application/json'
   },
 });
 
