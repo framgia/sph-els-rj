@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Validator;
+
 use App\Http\Resources\UserCollection;
-use Illuminate\Support\Facades\Hash;
+
 
 
 
@@ -42,30 +41,7 @@ class UserController extends Controller
         //     'email'=> 'required|email|unique:users'
         // ]);
 
-        $validator = Validator::make($request->all(),[
-            'first_name' => ['required'],
-            'last_name' =>  ['required'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')], 
-        ]);
-
-        if($validator->fails()){
-                return response()->json([
-                    'message' =>  $validator->errors(), 
-                ], 201);
-        }
-
-       
-
-        $requestData = array_merge($request->all(), [
-            'password' => Hash::make($request->password),
-            'avatar' => 'dummy.png'
-        ]);
-
-
-    
-        $user = User::create($requestData);
-    
-        return response()->json([ 'data'=> $user, 'message' => 'Successfully added the user'], 200);
+        
     }
 
     /**
