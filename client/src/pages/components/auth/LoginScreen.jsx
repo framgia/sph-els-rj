@@ -7,10 +7,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
 import apiClient from "../../../utils/axios";
-import { useDispatch } from "react-redux";
-import { login } from "../../../redux/features/user/userSlice";
-import { useSelector } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../actions/userActions";
 
 import { useSnackbar } from "notistack";
 
@@ -19,7 +17,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 const LoginScreen = () => {
   const location = useLocation();
 
-  const { enqueueSnackbar } = useSnackbar();
+  // const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,44 +26,23 @@ const LoginScreen = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
   const Login = async (e) => {
     e.preventDefault();
-
-    // await axios
-    //   .get("http://localhost:8000/sanctum/csrf-cookie")
-    await apiClient.get("/csrf-cookie").then(async () => {
-      // Login...
-      apiClient
-        .post("/login", {
-          email,
-          password,
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            dispatch(
-              login({
-                userInfo: res.data,
-                token: res.data.access_token,
-              })
-            );
-            enqueueSnackbar("Logged in successfully");
-
-            localStorage.setItem("logged_in", true);
-
-            navigate(redirect);
-          } else if (res.status === 422) {
-            enqueueSnackbar("asdasd");
-          }
-        });
-    });
+    dispatch(login(email, password));
   };
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem("logged_in");
-    if (loggedIn) {
+    // const loggedIn = localStorage.getItem("logged_in");
+    // if (loggedIn) {
+    //   navigate("/");
+    // }
+    if (userInfo) {
       navigate("/");
     }
-  }, [navigate]);
+  }, [navigate, userInfo]);
 
   return (
     <AuthenticationLayout>

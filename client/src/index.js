@@ -12,7 +12,7 @@ import App from '../src/pages/App'
 import App from "../src/pages/App";
 >>>>>>> 0e65c10 (rebasing(5))
 
-import { store } from "./store";
+import store from "./store";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
