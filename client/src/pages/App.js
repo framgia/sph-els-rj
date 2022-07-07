@@ -6,7 +6,11 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function App() {
+
+
+
   return (
+<<<<<<< HEAD
     <BrowserRouter>
 <<<<<<< HEAD
       <Routes>
@@ -15,9 +19,14 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
       </Routes>
 =======
+=======
+
+    <BrowserRouter> 
+>>>>>>> 65d1344 (rebasing(3))
     <Routes>
+      <Route path='/' exact element={  <DashboardScreen />  } />
       <Route path='/register' element={ <SignUpScreen />}/>
-      {/* <Route path='/login' element={ <LoginScreen />}/> */}
+      <Route path='/login' element={ <LoginScreen />}/> 
     </Routes>
 >>>>>>> 3b8d475 (rebasing(2))
     </BrowserRouter>
