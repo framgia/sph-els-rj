@@ -8,15 +8,24 @@ import {
   Avatar,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 
 import AuthenticationLayout from "../../Layouts/AuthenticationLayout";
+=======
+import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
+// import axios from "axios";
+import apiClient from '../../../utils/axios'
+>>>>>>> f6190d0 (fix-file-structure(2nd commit))
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { SignUpValidations } from "../../../utils/validations/Registration";
+<<<<<<< HEAD
 import apiClient from "../../../utils/axios";
+=======
+>>>>>>> f6190d0 (fix-file-structure(2nd commit))
 
 export default function SignUpScreen() {
   const {
@@ -29,14 +38,23 @@ export default function SignUpScreen() {
   const { enqueueSnackbar } = useSnackbar();
 
   const registerUser = async (data) => {
+<<<<<<< HEAD
+=======
+    // alert(JSON.stringify(data));
+
+>>>>>>> f6190d0 (fix-file-structure(2nd commit))
     await apiClient.post("/users", data).then((res) => {
       if (res.status === 200) {
         enqueueSnackbar(`${res.data.message}`);
         reset();
       } else {
+<<<<<<< HEAD
         enqueueSnackbar(JSON.stringify(res.data.message.email), {
           variant: "error",
         });
+=======
+        enqueueSnackbar(JSON.stringify(res.data.message.email), { variant: 'error' });
+>>>>>>> f6190d0 (fix-file-structure(2nd commit))
       }
     });
   };
@@ -141,6 +159,34 @@ export default function SignUpScreen() {
               )}
             />
           </Grid>
+<<<<<<< HEAD
+=======
+          {/* <Grid item xs={12}>
+            <Controller
+              name="confirmPassword"
+              control={control}
+              defaultValue=""
+              render={({
+                field: { onChange, value },
+                fieldState: { invalid },
+              }) => (
+                <TextField
+                  fullWidth
+                  type="password"
+                  value={value}
+                  onChange={(value) => onChange(value)}
+                  label="confirm Password"
+                  helperText={
+                    errors.confirmPassword && (
+                      <p>{errors.confirmPassword.message}</p>
+                    )
+                  }
+                  error={invalid}
+                />
+              )}
+            />
+          </Grid> */}
+>>>>>>> f6190d0 (fix-file-structure(2nd commit))
         </Grid>
         <Button
           type="submit"
