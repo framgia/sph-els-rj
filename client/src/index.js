@@ -3,12 +3,10 @@ import ReactDOM from "react-dom/client";
 import { SnackbarProvider } from "notistack";
 
 
-
 import { store } from "./store";
 import { Provider } from "react-redux";
 
 import App from '../src/pages/App'
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
