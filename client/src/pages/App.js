@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 
 import SignUpScreen from "./components/registration/SignUpScreen";
@@ -16,15 +17,19 @@ import {useSelector} from 'react-redux'
 import { useEffect } from 'react';
 
 >>>>>>> 5f53c1e (fix/csrf-cookie-errors)
+=======
+import { Routes, BrowserRouter, Route, useNavigate } from "react-router-dom";
+import SignUpScreen from "./components/registration/SignUpScreen";
+import DashboardScreen from "./components/dashboard/DashboardScreen";
+import LoginScreen from "./components/auth/LoginScreen";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import CategoryScreen from "./components/categories/CategoryScreen";
+>>>>>>> 7295a2a (feature/create-category-markup)
 
 function App() {
-
-
-  
-
- 
-
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <BrowserRouter>
 <<<<<<< HEAD
@@ -42,6 +47,15 @@ function App() {
       <Route path='/login' element={ <LoginScreen />}/> 
     </Routes>
 >>>>>>> f6190d0 (fix-file-structure(2nd commit))
+=======
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<DashboardScreen />} />
+        <Route path="/register" element={<SignUpScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/lessons" element={<CategoryScreen />} />
+      </Routes>
+>>>>>>> 7295a2a (feature/create-category-markup)
     </BrowserRouter>
   );
 }
