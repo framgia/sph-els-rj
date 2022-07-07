@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\WordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,10 @@ Route::delete('v1/category/{id}', [CategoryController::class, 'destroy']);
 
 Route::get('v1/users', [UserController::class, 'index']);
 
+
+Route::post('v1/words', [WordController::class, 'store']);
+
+Route::get('v1/words', [WordController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

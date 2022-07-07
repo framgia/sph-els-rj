@@ -20,6 +20,7 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import useSWR, { mutate } from "swr";
 import apiClient from "../../../utils/axios";
+import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
 export default function DenseTable() {
@@ -115,9 +116,14 @@ export default function DenseTable() {
               </TableCell>
               <TableCell>{item.description}</TableCell>
               <TableCell align="center">
-                <Button variant="outlined" startIcon={<AddIcon />}>
-                  Add Word
-                </Button>
+                <Link
+                  to={`/category/${item.id}/word`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button variant="outlined" startIcon={<AddIcon />}>
+                    Add Word
+                  </Button>
+                </Link>
                 <Button
                   onClick={() => {
                     handleOpen(item.id);

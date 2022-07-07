@@ -19,11 +19,15 @@ import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+<<<<<<< HEAD
 <<<<<<< HEAD:client/src/pages/components/feature/registration/SignUpScreen.jsx
 import { SignUpValidations } from "../../../utils/validations/Registration";
 import apiClient from "../../../utils/axios";
 =======
 import {SignUpValidations} from '../../../utils/validations/Registration'
+=======
+import { SignUpValidations } from "../../../utils/validations/Registration";
+>>>>>>> 7a43b0a (feature/word-management(first-commit))
 import apiClient from "../../../utils/axios";
 import axios from "axios";
 >>>>>>> 6478718 (fix/file-structure and fix/csrf-issues):client/src/pages/components/registration/SignUpScreen.jsx
@@ -71,8 +75,12 @@ export default function SignUpScreen() {
             });
           }
         });
+<<<<<<< HEAD
        });
 >>>>>>> 6478718 (fix/file-structure and fix/csrf-issues):client/src/pages/components/registration/SignUpScreen.jsx
+=======
+      });
+>>>>>>> 7a43b0a (feature/word-management(first-commit))
   };
 
   return (

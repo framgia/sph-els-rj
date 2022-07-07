@@ -22,6 +22,8 @@ const CategoryScreen = ({ children }) => {
   const [name, setName] = useState("");
   const [description, setDesription] = useState("");
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -37,8 +39,6 @@ const CategoryScreen = ({ children }) => {
     boxShadow: 24,
     p: 4,
   };
-
-  const { enqueueSnackbar } = useSnackbar();
 
   const submitHandler = (e) => {
     e.preventDefault();

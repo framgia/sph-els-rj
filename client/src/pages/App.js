@@ -23,8 +23,7 @@ import SignUpScreen from "./components/registration/SignUpScreen";
 import DashboardScreen from "./components/dashboard/DashboardScreen";
 import LoginScreen from "./components/auth/LoginScreen";
 import UserScreeen from "./components/user/UserScreen";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import WordCreation from "./components/words/WordCreation";
 import CategoryScreen from "./components/categories/CategoryScreen";
 >>>>>>> 7295a2a (feature/create-category-markup)
 
@@ -56,6 +55,7 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/lessons" element={<CategoryScreen />} />
         <Route path="/users" element={<UserScreeen />} />
+        <Route path="/category/:category_id/word" element={<WordCreation />} />
       </Routes>
 >>>>>>> 7295a2a (feature/create-category-markup)
     </BrowserRouter>

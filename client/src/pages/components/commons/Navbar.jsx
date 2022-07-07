@@ -91,7 +91,11 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to={`/${page.toLocaleLowerCase()}`} passHref>
+                  <Link
+                    to={`/${page.toLocaleLowerCase()}`}
+                    passHref
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography textAlign="center">
                       {page.toLocaleLowerCase()}
                     </Typography>
@@ -121,7 +125,7 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={`/${page}`} passHref>
+              <Link to={`/${page}`} passHref style={{ textDecoration: "none" }}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
