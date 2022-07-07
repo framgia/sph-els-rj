@@ -17,9 +17,8 @@ import { useSnackbar } from "notistack";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const LoginScreen = () => {
-
   const location = useLocation();
-  
+
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,36 +31,33 @@ const LoginScreen = () => {
   const Login = async (e) => {
     e.preventDefault();
 
-
-    await axios.get('http://localhost:8000/sanctum/csrf-cookie').then(async () => {
+    // await axios
+    //   .get("http://localhost:8000/sanctum/csrf-cookie")
+    await apiClient.get("/csrf-cookie").then(async () => {
       // Login...
       apiClient
-      .post("/login", {
-        email,
-        password,
-      })
-      .then((res) => {
-   
-        if (res.status === 200) {
-          dispatch(
-            login({
-              userInfo: res.data,
-              token: res.data.access_token,
-            })
-          );
-          enqueueSnackbar("Logged in successfully");
+        .post("/login", {
+          email,
+          password,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch(
+              login({
+                userInfo: res.data,
+                token: res.data.access_token,
+              })
+            );
+            enqueueSnackbar("Logged in successfully");
 
-          localStorage.setItem("userInfo", JSON.stringify(res.data));
-          localStorage.setItem("logged_in", true);
+            localStorage.setItem("logged_in", true);
 
-          navigate(redirect);
-        } else if(res.status === 422) {
-          enqueueSnackbar("asdasd");
-        }
-      });
-  });
-
-   
+            navigate(redirect);
+          } else if (res.status === 422) {
+            enqueueSnackbar("asdasd");
+          }
+        });
+    });
   };
 
   useEffect(() => {

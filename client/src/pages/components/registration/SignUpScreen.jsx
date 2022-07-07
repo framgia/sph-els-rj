@@ -15,7 +15,7 @@ import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import {SignUpValidations} from '../../../utils/validations/Registration'
+import { SignUpValidations } from "../../../utils/validations/Registration";
 import apiClient from "../../../utils/axios";
 import axios from "axios";
 
@@ -30,11 +30,8 @@ export default function SignUpScreen() {
   const { enqueueSnackbar } = useSnackbar();
 
   const registerUser = async (data) => {
-
-    // alert(JSON.stringify(data));
-
-    await axios
-      .get("http://localhost:8000/sanctum/csrf-cookie", {
+    await apiClient
+      .get("/sanctum/csrf-cookie", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -50,7 +47,7 @@ export default function SignUpScreen() {
             });
           }
         });
-       });
+      });
   };
 
   return (
@@ -153,33 +150,6 @@ export default function SignUpScreen() {
               )}
             />
           </Grid>
-
-          {/* <Grid item xs={12}>
-            <Controller
-              name="confirmPassword"
-              control={control}
-              defaultValue=""
-              render={({
-                field: { onChange, value },
-                fieldState: { invalid },
-              }) => (
-                <TextField
-                  fullWidth
-                  type="password"
-                  value={value}
-                  onChange={(value) => onChange(value)}
-                  label="confirm Password"
-                  helperText={
-                    errors.confirmPassword && (
-                      <p>{errors.confirmPassword.message}</p>
-                    )
-                  }
-                  error={invalid}
-                />
-              )}
-            />
-          </Grid> */}
-
         </Grid>
         <Button
           type="submit"
