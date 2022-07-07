@@ -9,14 +9,24 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
+<<<<<<< HEAD:client/src/pages/components/feature/registration/SignUpScreen.jsx
 import AuthenticationLayout from "../../Layouts/AuthenticationLayout";
+=======
+import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
+>>>>>>> 6478718 (fix/file-structure and fix/csrf-issues):client/src/pages/components/registration/SignUpScreen.jsx
 
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+<<<<<<< HEAD:client/src/pages/components/feature/registration/SignUpScreen.jsx
 import { SignUpValidations } from "../../../utils/validations/Registration";
 import apiClient from "../../../utils/axios";
+=======
+import {SignUpValidations} from '../../../utils/validations/Registration'
+import apiClient from "../../../utils/axios";
+import axios from "axios";
+>>>>>>> 6478718 (fix/file-structure and fix/csrf-issues):client/src/pages/components/registration/SignUpScreen.jsx
 
 export default function SignUpScreen() {
   const {
@@ -29,6 +39,7 @@ export default function SignUpScreen() {
   const { enqueueSnackbar } = useSnackbar();
 
   const registerUser = async (data) => {
+<<<<<<< HEAD:client/src/pages/components/feature/registration/SignUpScreen.jsx
     apiClient.post("/register", data).then((res) => {
       if (res.status === 200) {
         enqueueSnackbar(`${res.data.message}`);
@@ -40,6 +51,28 @@ export default function SignUpScreen() {
       }
     });
     // });
+=======
+    // alert(JSON.stringify(data));
+
+    await axios
+      .get("http://localhost:8000/sanctum/csrf-cookie", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(async () => {
+        await apiClient.post("/register", data).then((res) => {
+          if (res.status === 200) {
+            enqueueSnackbar(`${res.data.message}`);
+            reset();
+          } else {
+            enqueueSnackbar(JSON.stringify(res.data.message.email), {
+              variant: "error",
+            });
+          }
+        });
+       });
+>>>>>>> 6478718 (fix/file-structure and fix/csrf-issues):client/src/pages/components/registration/SignUpScreen.jsx
   };
 
   return (
