@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,17 @@ Route::post('v1/register', [RegisterController::class, 'register']);
 
 
 Route::post('v1/login', [LoginController::class, 'index']);
+
+
+
+Route::post('v1/category', [CategoryController::class, 'store']);
+Route::get('v1/category', [CategoryController::class, 'index']);
+Route::get('v1/category/{id}', [CategoryController::class, 'show']);
+Route::put('v1/category/{id}', [CategoryController::class, 'update']);
+Route::delete('v1/category/{id}', [CategoryController::class, 'destroy']);
+
+// Route::resource('/v1/category', CategoryController::class);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

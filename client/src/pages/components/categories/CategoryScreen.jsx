@@ -10,14 +10,21 @@ import {
   Grid,
 } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import ClassIcon from "@mui/icons-material/Class";
 import CategoryTable from "./CategoryTable";
+import apiClient from "../../../utils/axios";
+import useSWR, { mutate } from "swr";
+
+import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { CategoryValidation } from "../../../utils/validations/Category";
 
 const CategoryScreen = ({ children }) => {
   const [name, setName] = useState("");
   const [description, setDesription] = useState("");
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const style = {
     position: "absolute",
@@ -31,9 +38,18 @@ const CategoryScreen = ({ children }) => {
     p: 4,
   };
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    apiClient.post("/category", { name, description }).then((res) => {
+      mutate("/category");
+      enqueueSnackbar(`${res.data.message}`);
+      handleClose();
+      setDesription("");
+      setName("");
+    });
+  };
 
   return (
     <AppLayout>
@@ -42,11 +58,15 @@ const CategoryScreen = ({ children }) => {
           sx={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "flex-end",
+            justifyContent: "space-between",
           }}
         >
+          <Typography variant="h5" sx={{ p: 1 }}>
+            Categories
+          </Typography>
           <Button
-            variant="contained"
+            variant="outlined"
+            size="large"
             onClick={handleOpen}
             endIcon={<AddBoxIcon />}
           >
@@ -69,7 +89,7 @@ const CategoryScreen = ({ children }) => {
             New Category
           </Typography>
 
-          <Box component="form" sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={submitHandler} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
