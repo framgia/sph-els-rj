@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   Box,
@@ -7,19 +7,20 @@ import {
   Button,
   Avatar,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
-
 import { useSnackbar } from "notistack";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { SignUpValidations } from "../../../utils/validations/Registration";
 import apiClient from "../../../utils/axios";
-import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function SignUpScreen() {
+  const navigate = useNavigate();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
   const {
     control,
     reset,
@@ -31,7 +32,7 @@ export default function SignUpScreen() {
 
   const registerUser = async (data) => {
     await apiClient
-      .get("/sanctum/csrf-cookie", {
+      .get("/csrf-cookie", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -49,6 +50,12 @@ export default function SignUpScreen() {
         });
       });
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
 
   return (
     <AuthenticationLayout>

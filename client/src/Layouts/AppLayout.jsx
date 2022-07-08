@@ -1,27 +1,28 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Container, Box } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import Navbar from "../pages/commons/Navbar";
 
 const theme = createTheme();
 
-const AuthenticationLayout = ({ children }) => {
+const AppLayout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Navbar />
+      <Container component="main" maxWidth="lg">
         <CssBaseline />
-        <Box
+
+        <Container
           sx={{
-            marginTop: 20,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            m: 2,
+            p: 2,
           }}
         >
           {children}
-        </Box>
+        </Container>
       </Container>
     </ThemeProvider>
   );
 };
 
-export default AuthenticationLayout;
+export default AppLayout;
