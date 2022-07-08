@@ -17,8 +17,14 @@ import { useSnackbar } from "notistack";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const LoginScreen = () => {
+<<<<<<< HEAD
   const location = useLocation();
 
+=======
+
+  const location = useLocation();
+  
+>>>>>>> 8a85ea2 (rebasing(4))
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,6 +37,7 @@ const LoginScreen = () => {
   const Login = async (e) => {
     e.preventDefault();
 
+<<<<<<< HEAD
     // await axios
     //   .get("http://localhost:8000/sanctum/csrf-cookie")
     await apiClient.get("/csrf-cookie").then(async () => {
@@ -58,6 +65,38 @@ const LoginScreen = () => {
           }
         });
     });
+=======
+
+    await axios.get('http://localhost:8000/sanctum/csrf-cookie').then(async () => {
+      // Login...
+      apiClient
+      .post("/login", {
+        email,
+        password,
+      })
+      .then((res) => {
+   
+        if (res.status === 200) {
+          dispatch(
+            login({
+              userInfo: res.data,
+              token: res.data.access_token,
+            })
+          );
+          enqueueSnackbar("Logged in successfully");
+
+          localStorage.setItem("userInfo", JSON.stringify(res.data));
+          localStorage.setItem("logged_in", true);
+
+          navigate(redirect);
+        } else if(res.status === 422) {
+          enqueueSnackbar("asdasd");
+        }
+      });
+  });
+
+   
+>>>>>>> 8a85ea2 (rebasing(4))
   };
 
   useEffect(() => {
