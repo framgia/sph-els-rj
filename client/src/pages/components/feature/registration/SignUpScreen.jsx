@@ -30,6 +30,7 @@ export default function SignUpScreen() {
   const { enqueueSnackbar } = useSnackbar();
 
   const registerUser = async (data) => {
+<<<<<<< HEAD:client/src/pages/components/registration/SignUpScreen.jsx
     await apiClient
       .get("/sanctum/csrf-cookie", {
         headers: {
@@ -48,6 +49,28 @@ export default function SignUpScreen() {
           }
         });
       });
+=======
+    // alert(JSON.stringify(data));
+
+    // axios
+    //   .get("/sanctum/csrf-cookie", {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //   .then(() => {
+    apiClient.post("/register", data).then((res) => {
+      if (res.status === 200) {
+        enqueueSnackbar(`${res.data.message}`);
+        reset();
+      } else {
+        enqueueSnackbar(JSON.stringify(res.data.message.email), {
+          variant: "error",
+        });
+      }
+    });
+    // });
+>>>>>>> 9f13142 (rebasing(3)):client/src/pages/components/feature/registration/SignUpScreen.jsx
   };
 
   return (

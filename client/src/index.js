@@ -10,6 +10,9 @@ import { Provider } from "react-redux";
 =======
 >>>>>>> 390ba4a (rebasing(1))
 
+import { store } from "./store";
+import { Provider } from "react-redux";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
