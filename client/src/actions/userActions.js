@@ -15,11 +15,6 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_REQUEST,
     });
 
-    // const config = {
-    //   header: {
-    //     "Content-Type": "application/json",
-    //   },
-    // };
     await csrf();
     const response = await apiClient.post("/login", { email, password });
 

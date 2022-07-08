@@ -52,10 +52,6 @@ export default function SignUpScreen() {
   };
 
   useEffect(() => {
-    // const loggedIn = localStorage.getItem("logged_in");
-    // if (loggedIn) {
-    //   navigate("/");
-    // }
     if (userInfo) {
       navigate("/");
     }

@@ -16,9 +16,6 @@ const AppLayout = ({ children }) => {
           sx={{
             m: 2,
             p: 2,
-            // flexDirection: "flex-start",
-
-            //alignItems: "center",
           }}
         >
           {children}

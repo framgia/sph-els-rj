@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import {
+  Avatar,
+  Button,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+} from "@mui/material";
+
 import AuthenticationLayout from "../../../Layouts/AuthenticationLayout";
-import apiClient from "../../../utils/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../actions/userActions";
 
-import { useSnackbar } from "notistack";
-
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginScreen = () => {
-  const location = useLocation();
-
-  // const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
-
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo } = userLogin;
 
   const Login = async (e) => {
     e.preventDefault();
@@ -35,10 +30,6 @@ const LoginScreen = () => {
   };
 
   useEffect(() => {
-    // const loggedIn = localStorage.getItem("logged_in");
-    // if (loggedIn) {
-    //   navigate("/");
-    // }
     if (userInfo) {
       navigate("/");
     }
