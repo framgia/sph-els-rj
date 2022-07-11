@@ -20,7 +20,7 @@ import { useSelector } from "react-redux";
 export default function SignUpScreen() {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo } = userLogin;
   const {
     control,
     reset,
