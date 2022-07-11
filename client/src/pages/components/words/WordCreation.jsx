@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import AppLayout from "../../../Layouts/AppLayout";
-import ChoiceCreation from "../choices/ChoiceCreation";
-import {
-  Button,
-  Paper,
-  Box,
-  TextField,
-  Typography,
-  Modal,
-} from "@mui/material";
+import { Button, Paper, Box, TextField, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import WordsApi from "./index";
 

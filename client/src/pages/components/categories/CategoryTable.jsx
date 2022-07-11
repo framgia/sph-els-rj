@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   Paper,
@@ -19,7 +19,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import useSWR, { mutate } from "swr";
-import apiClient from "../../../utils/axios";
+import { style } from "../commons/modal/modalStyle";
 import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import CategoryApi from ".";
@@ -45,18 +45,6 @@ export default function DenseTable() {
     setOpen(false);
   };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   const { data: categories } = useSWR(`/category`);
 
   const handleDelete = (id) => {
@@ -74,8 +62,6 @@ export default function DenseTable() {
       setOpen(false);
     });
   };
-
-  console.log(rowId);
 
   return (
     <TableContainer

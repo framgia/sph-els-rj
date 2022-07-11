@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Container, Box } from "@mui/material";
+import { Container } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "../pages/components/commons/Navbar";
 

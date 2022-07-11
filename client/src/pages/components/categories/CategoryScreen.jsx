@@ -10,14 +10,12 @@ import {
   Grid,
 } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import ClassIcon from "@mui/icons-material/Class";
 import CategoryTable from "./CategoryTable";
-import apiClient from "../../../utils/axios";
-import useSWR, { mutate } from "swr";
+import { style } from "../commons/modal/modalStyle";
+import { mutate } from "swr";
 import CategoryApi from "./index";
 
 import { useSnackbar } from "notistack";
-import { useForm, Controller } from "react-hook-form";
 
 const CategoryScreen = ({ children }) => {
   const [name, setName] = useState("");
@@ -28,18 +26,6 @@ const CategoryScreen = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
 
   const submitHandler = (e) => {
     e.preventDefault();

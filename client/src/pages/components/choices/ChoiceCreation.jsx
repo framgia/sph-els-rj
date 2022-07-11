@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   Checkbox,
-  Chip,
   IconButton,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -15,7 +14,7 @@ import AppLayout from "../../../Layouts/AppLayout";
 import { Link, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useSWR, { mutate } from "swr";
-import apiClient from "../../../utils/axios";
+
 import Choices from "./Choices";
 import ChoiceApi from "./index";
 
@@ -27,12 +26,10 @@ const ChoiceCreation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputFields);
     const choice_name = inputFields.map((data) => data.choiceName);
     const is_correct = inputFields.map((data) => data.isCorrect);
     ChoiceApi.store(word_id, choice_name, is_correct).then(({ status }) => {
       if (status === 200) {
-        // setInputFields(inputFields.choiceName === "");
         mutate(`/words/${word_id}/choices`);
         setInputFields([]);
       }

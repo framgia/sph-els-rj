@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import AppLayout from "../../../Layouts/AppLayout";
-import { Button, Paper, Box, Modal, Typography } from "@mui/material";
+import { Paper, Box, Typography } from "@mui/material";
 
 import UserTable from "./UserTable";
 

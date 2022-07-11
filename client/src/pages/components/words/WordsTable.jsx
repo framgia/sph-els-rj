@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   Paper,
@@ -15,6 +15,7 @@ import {
   Table,
   Typography,
 } from "@mui/material";
+import { style } from "../commons/modal/modalStyle";
 import { Link, useParams } from "react-router-dom";
 import WordsApi from "./index";
 import useSWR, { mutate } from "swr";
@@ -40,21 +41,6 @@ export default function WordsTable() {
       setRowId(id);
       setWord(res.data.word);
     });
-  };
-
-  console.log(rowId);
-  console.log(word);
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
   };
 
   const { data: words } = useSWR(`/category/${category_id}/words`);

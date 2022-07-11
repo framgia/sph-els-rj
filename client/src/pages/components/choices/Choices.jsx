@@ -6,14 +6,13 @@ import {
   Button,
   Chip,
   Typography,
-  Stack,
   Modal,
   Grid,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { style } from "../commons/modal/modalStyle";
 import { useParams } from "react-router-dom";
 import useSWR, { mutate } from "swr";
-import apiClient from "../../../utils/axios";
+
 import ChoiceApi from "./index";
 
 const Choices = () => {
@@ -54,19 +53,6 @@ const Choices = () => {
     });
   };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
-  console.log(choices);
   return (
     <Paper sx={{ m: 1, p: 3, boxShadow: 5 }}>
       <Box
