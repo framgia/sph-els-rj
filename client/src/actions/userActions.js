@@ -7,15 +7,13 @@ import {
   USER_LOGOUT,
 } from "../constants/userConstants";
 
-const csrf = () => apiClient.get("/csrf-cookie");
-
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
     });
 
-    await csrf();
+    // const csrf = apiClient.get("/csrf-cookie");
     const response = await apiClient.post("/login", { email, password });
 
     dispatch({
@@ -35,8 +33,9 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
+export const logout = () => async (dispatch, getState) => {
+  const csrf = apiClient.get("/csrf-cookie");
+  await apiClient.post("/logout");
   localStorage.removeItem("userInfo");
-  localStorage.removeItem("cartItems");
   dispatch({ type: USER_LOGOUT });
 };
